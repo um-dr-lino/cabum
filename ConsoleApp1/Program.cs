@@ -46,15 +46,22 @@ while(true){
     if(direcao2 == "e") novoX2--;
     if(direcao2 == "d") novoX2++;
 
+
+    //edicão 21:19
     if(jog1.PodeResponderTecla(tecla.Key) && campoJogo.podeMover(jog1.x, jog1.y, tecla.Key)){
-        jog1.mover(tecla.Key);
+        //so move se nao colidir com jog2
+        if (novoX1 != jog2.x || novoY1 != jog2.y){
+            jog1.mover(tecla.Key);
+        }
     }
 
     if(campoJogo.podeMover(jog2.x, jog2.y, tecla.Key)){
+        //so move se nao colidir com jog1
+        if (novoX2 != jog1.x || novoY2 != jog1.y){
         jog2.mover(tecla.Key);
     }
+    }
 }
-
 Console.ReadKey();
 
 
